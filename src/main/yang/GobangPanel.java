@@ -37,7 +37,7 @@ public class GobangPanel extends JPanel  {
     public static int t = 0;//五手N打循环
 
     public static boolean beat=false;
-    protected static int[] standardList;  //选定定式开局的前三颗棋子中的第2、3步棋子坐标（第一步总在天元，故不存）
+    protected static int[] standardList = new int[4];  //选定定式开局的前三颗棋子中的第2、3步棋子坐标（第一步总在天元，故不存）
 
     // VCF所用变量
     private VCF vcf;  //VCF对象
@@ -312,6 +312,7 @@ public class GobangPanel extends JPanel  {
         beat=false;
         p=false;
         t=0;
+        vcfFlag = false;
         if (isStandard) {  // 如果选择了某一定式开局，则把第2、3步落子也下了
             putChess(8,8);
             putChess(standardList[0], standardList[1]);
@@ -354,53 +355,6 @@ public class GobangPanel extends JPanel  {
                 if ((mods & InputEvent.BUTTON1_MASK) != 0) {// 鼠标左键
                     if (putChess(x, y)) {
                        if (VSMode == ManAI) {
-//                           if (!isbeat) {
-//                               if (vcfFlag) {  //若已找到VCF解法，则按着找到的解法走
-//                                   //所要搜寻的走法索引未超过解法列表尺寸，且白的走法按着解法列表走法走，则黑子根据搜寻到的结果走
-//                                   if ((++solveIndex < chessSolve.size() && (x == chessSolve.get(solveIndex - 1).getX() && y == chessSolve.get(solveIndex - 1).getY()))) {
-//                                       putChess(chessSolve.get(solveIndex).getX(), chessSolve.get(solveIndex).getY());
-//                                       solveIndex++;
-//                                   } else {    // 否则调用评估函数，此时得到的结果往往直接连五
-//                                       Chess goalchess = level.getonechess(currentPlayer, copyBoardData(), history);
-//                                       putChess(goalchess.getX(), goalchess.getY());
-//                                   }
-//                               } else {
-//                                   if (initUser == 4) {  // 先手为机器
-//                                       try {
-//                                           Chess AI = AIGo.aigo();
-//                                           //找到必胜手
-//                                           if (AI.getX() != 0) {
-//                                               putChess(AI.getX(), AI.getY());
-//                                           }
-//                                           //未找到必胜手
-////                                           if (AI.getX() == 0) {
-//                                           chessSolve = vcf.find_solution(currentPlayer); //必胜棋谱没找到，开始VCF搜索
-//                                           if (chessSolve.size() != 0) {
-//                                               vcfFlag = true;
-//                                               putChess(chessSolve.get(solveIndex).getX(), chessSolve.get(solveIndex).getY());
-//                                               solveIndex++;
-//                                           } else {   //VCF找不到，调用评估函数
-//                                               Chess goalchess = level.getonechess(currentPlayer, copyBoardData(), history);
-//                                               putChess(goalchess.getX(), goalchess.getY());
-//                                           }
-////                                           }
-//
-//                                       } catch (IOException ex) {
-//                                           ex.printStackTrace();
-//                                       }
-//                                   } else if (initUser == 3) {//先手是对手
-//                                       chessSolve = vcf.find_solution(currentPlayer); //必胜棋谱没找到，开始VCF搜索
-//                                       if (chessSolve.size() != 0) {
-//                                           vcfFlag = true;
-//                                           putChess(chessSolve.get(solveIndex).getX(), chessSolve.get(solveIndex).getY());
-//                                           solveIndex++;
-//                                       } else {
-//                                           Chess goalchess = level.getonechess(currentPlayer, copyBoardData(), history);
-//                                           putChess(goalchess.getX(), goalchess.getY());
-//                                       }
-//                                   }
-//                               }
-//                           }
                            if (!FiveBeat.beat()) {
                                if (vcfFlag) {  //若已找到VCF解法，则按着找到的解法走
                                    //所要搜寻的走法索引未超过解法列表尺寸，且白的走法按着解法列表走法走，则黑子根据搜寻到的结果走
@@ -481,6 +435,7 @@ public class GobangPanel extends JPanel  {
                 isGameOver = true;
                 //停止计时
                 mainUI.stopWatch.stop();
+                MainUI.startBtn.setEnabled(true);
                 if (winSide == WHITE) {
                     JOptionPane.showMessageDialog(GobangPanel.this, "白方赢了！");
                 } else if (winSide == BLACK) {
