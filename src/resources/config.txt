@@ -1,0 +1,12 @@
+#配置文件中只允许修改“：”后面的取值
+#初始化玩家A B用户名
+userAName：胡歌
+userBName：彭于晏
+VSmode：人机模式
+Begin：指定开局
+Rule：有禁手
+n_time_value：五手2打
+#棋盘背景颜色
+Background：src/image/background.jpg
+Right_bg：src/image/panel1.jpg
+Help：src/resources/中国五子棋竞赛规则(2013版)-中国棋牌网.pdf

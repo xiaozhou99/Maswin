@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/src/main/lu/VCF.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/ning/AIGo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/yang/GobangPanel.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/yang/MainUI.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/resources/GameHistory/T852vs1.11654955087866.txt" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/src/resources/config.properties" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/resources/config.txt" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
